@@ -1,4 +1,6 @@
 use serde::Deserialize;
+use uuid::Uuid;
+use crate::models::progress::Progress;
 
 #[derive(Deserialize)]
 pub struct BoardAction {
