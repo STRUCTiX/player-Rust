@@ -6,3 +6,4 @@ pub struct PlayerAction {
     pub dest: u32,   // uid of destination base
     pub amount: u32, // number of bits moved
 }
+

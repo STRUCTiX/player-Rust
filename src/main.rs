@@ -1,14 +1,24 @@
 #![allow(non_snake_case)]
-use axum::{routing::post, Router};
+mod logic;
+mod models;
+
+use axum::{routing::post, Json, Router};
+use models::{board_action::BoardAction, player_action::PlayerAction};
+use tracing::info;
 
 #[tokio::main]
 async fn main() {
-    // build our application with a single route
-    let app = Router::new().route("/", post(index));
+    tracing_subscriber::fmt()
+        .with_max_level(tracing::Level::DEBUG)
+        .init();
 
-    // run our app with hyper, listening globally on port 3000
+    info!("Start Rust player");
+
+    let app = Router::new().route("/", post(index));
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
 
-async fn index() {}
+async fn index(Json(payload): Json<BoardAction>) -> Json<PlayerAction> {
+    Json(logic::strategy::decide(payload))
+}

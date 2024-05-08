@@ -6,3 +6,4 @@ pub struct Position {
     pub y: i32, // y coordinate
     pub z: i32, // y coordinate
 }
+
