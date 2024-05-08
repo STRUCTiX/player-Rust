@@ -4,7 +4,7 @@ use crate::models::game::Game;
 use crate::models::game_config::GameConfig;
 use serde::Deserialize;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 pub struct GameState {
     pub actions: Vec<BoardAction>, // list of all actions in progress
     pub bases: Vec<Base>,          // list of all bases

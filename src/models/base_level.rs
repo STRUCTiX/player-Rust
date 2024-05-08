@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
 pub struct BaseLevel {
     #[serde(rename = "maxPopulation")]
     pub max_population: u32, // number of sustainable bits
