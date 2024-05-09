@@ -19,6 +19,6 @@ async fn main() {
     axum::serve(listener, app).await.unwrap();
 }
 
-async fn index(Json(payload): Json<BoardAction>) -> Json<PlayerAction> {
+async fn index(Json(payload): Json<BoardAction>) -> Json<Vec<PlayerAction>> {
     Json(logic::strategy::decide(payload))
 }
