@@ -8,3 +8,11 @@ pub struct PathConfig {
     pub death_rate: u32, // number of units killed every tick after surpassing the grace period
 }
 
+impl Default for PathConfig {
+    fn default() -> Self {
+        PathConfig {
+            grace_period: 0,
+            death_rate: 0,
+        }
+    }
+}

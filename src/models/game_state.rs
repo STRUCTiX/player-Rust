@@ -12,3 +12,13 @@ pub struct GameState {
     pub game: Game,                // information about the game
 }
 
+impl Default for GameState {
+    fn default() -> Self {
+        GameState {
+            actions: vec![BoardAction::default()],
+            bases: vec![Base::default()],
+            config: GameConfig::default(),
+            game: Game::default(),
+        }
+    }
+}

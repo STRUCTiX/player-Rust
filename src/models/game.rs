@@ -11,3 +11,14 @@ pub struct Game {
     pub player: u32, // uid of your player
 }
 
+impl Default for Game {
+    fn default() -> Self {
+        Game {
+            uid: 0,
+            tick: 0,
+            player_count: 0,
+            remaining_players: 0,
+            player: 0,
+        }
+    }
+}

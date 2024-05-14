@@ -2,7 +2,7 @@ use crate::models::progress::Progress;
 use serde::Deserialize;
 use uuid::Uuid;
 
-#[derive(Deserialize, Clone, Copy)]
+#[derive(Deserialize, PartialEq, Eq, Clone, Copy)]
 pub struct BoardAction {
     pub src: u32,           // uid of source base
     pub dest: u32,          // uid of destination base
@@ -12,3 +12,15 @@ pub struct BoardAction {
     pub progress: Progress, // progress off the action
 }
 
+impl Default for BoardAction {
+    fn default() -> Self {
+        BoardAction {
+            src: 0,
+            dest: 0,
+            amount: 0,
+            uuid: Uuid::default(),
+            player: 0,
+            progress: Progress::default(),
+        }
+    }
+}

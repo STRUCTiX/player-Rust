@@ -7,3 +7,12 @@ pub struct PlayerAction {
     pub amount: u32, // number of bits moved
 }
 
+impl Default for PlayerAction {
+    fn default() -> Self {
+        PlayerAction {
+            src: 0,
+            dest: 0,
+            amount: 0,
+        }
+    }
+}

@@ -8,3 +8,17 @@ pub fn decide(board_action: BoardAction) -> Vec<PlayerAction> {
         amount: 0,
     }]
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn decide_test() {
+        let want = vec![PlayerAction::default()];
+
+        let result = decide(BoardAction::default());
+
+        assert!(want == result)
+    }
+}

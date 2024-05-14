@@ -8,3 +8,11 @@ pub struct GameConfig {
     paths: PathConfig,           // settings containing paths between bases
 }
 
+impl Default for GameConfig {
+    fn default() -> Self {
+        GameConfig {
+            base_levels: vec![BaseLevel::default()],
+            paths: PathConfig::default(),
+        }
+    }
+}

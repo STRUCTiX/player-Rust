@@ -7,3 +7,8 @@ pub struct Position {
     pub z: i32, // y coordinate
 }
 
+impl Default for Position {
+    fn default() -> Self {
+        Position { x: 0, y: 0, z: 0 }
+    }
+}

@@ -6,3 +6,11 @@ pub struct Progress {
     pub traveled: u32, // distance already traveled
 }
 
+impl Default for Progress {
+    fn default() -> Self {
+        Progress {
+            distance: 0,
+            traveled: 0,
+        }
+    }
+}

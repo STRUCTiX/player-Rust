@@ -10,3 +10,12 @@ pub struct BaseLevel {
     pub spawn_rate: u32, // number uf bits spawned per tick
 }
 
+impl Default for BaseLevel {
+    fn default() -> Self {
+        BaseLevel {
+            max_population: 0,
+            upgrade_cost: 0,
+            spawn_rate: 0,
+        }
+    }
+}
