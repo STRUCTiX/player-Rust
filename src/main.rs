@@ -3,7 +3,7 @@ mod logic;
 mod models;
 
 use axum::{routing::post, Json, Router};
-use models::{board_action::BoardAction, player_action::PlayerAction};
+use models::{game_state::GameState, player_action::PlayerAction};
 use tracing::info;
 
 #[tokio::main]
@@ -19,6 +19,6 @@ async fn main() {
     axum::serve(listener, app).await.unwrap();
 }
 
-async fn index(Json(payload): Json<BoardAction>) -> Json<Vec<PlayerAction>> {
+async fn index(Json(payload): Json<GameState>) -> Json<Vec<PlayerAction>> {
     Json(logic::strategy::decide(payload))
 }
