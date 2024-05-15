@@ -1,11 +1,18 @@
-FROM docker.io/library/rust:1.78-alpine as builder
+FROM lukemathwalker/cargo-chef:latest-rust-alpine AS chef
+WORKDIR /src
 
-# Compile dependencies (musl, openssl)
-RUN apk add --no-cache musl-dev openssl-dev openssl-libs-static pkgconf git
+FROM chef AS planner
+COPY . .
+# Create dependencies
+RUN cargo chef prepare --recipe-path /src/recipe.json
 
-WORKDIR /wd
-COPY . /wd
-RUN cargo build --bins --release
+FROM chef AS builder
+COPY --from=planner /src/recipe.json /src/recipe.json
+# Build dependencies
+RUN cargo chef cook --release --recipe-path /src/recipe.json
+# Build application
+COPY . .
+RUN cargo build --release --bin player-Rust
 
 # Use scratch image to reduce image size
 FROM scratch
@@ -19,5 +26,5 @@ LABEL name="player-Rust" \
       description="A client for BitWars written in Rust using the Axum webserver with Tokio runtime"
 EXPOSE 3000
 
-COPY --from=builder /wd/target/release/player-Rust /
+COPY --from=builder /src/target/release/player-Rust /
 CMD ["./player-Rust"]
