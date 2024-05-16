@@ -2,7 +2,7 @@ use crate::models::progress::Progress;
 use serde::Deserialize;
 use uuid::Uuid;
 
-#[derive(Deserialize, PartialEq, Eq, Clone, Copy)]
+#[derive(Deserialize, Debug, PartialEq, Eq, Clone, Copy)]
 pub struct BoardAction {
     pub src: u32,           // uid of source base
     pub dest: u32,          // uid of destination base
