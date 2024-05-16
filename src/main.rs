@@ -2,7 +2,10 @@
 mod logic;
 mod models;
 
-use axum::{routing::post, Json, Router};
+use axum::{
+    routing::{get, post},
+    Json, Router,
+};
 use models::{game_state::GameState, player_action::PlayerAction};
 use tracing::info;
 
@@ -14,9 +17,15 @@ async fn main() {
 
     info!("Start Rust player");
 
-    let app = Router::new().route("/", post(index));
+    let app = Router::new()
+        .route("/", get(identify))
+        .route("/", post(index));
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
     axum::serve(listener, app).await.unwrap();
+}
+
+async fn identify() -> &'static str {
+    "Bitwars Rust Player"
 }
 
 async fn index(Json(payload): Json<GameState>) -> Json<Vec<PlayerAction>> {
