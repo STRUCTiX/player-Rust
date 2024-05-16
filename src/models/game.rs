@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-#[derive(Deserialize, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
+#[derive(Deserialize, Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
 pub struct Game {
     pub uid: u32,  // uid of game
     pub tick: u32, // tick in game

@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-#[derive(Deserialize, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
+#[derive(Deserialize, Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
 pub struct PathConfig {
     #[serde(rename = "gracePeriod")]
     pub grace_period: u32, // time until groups of bits take damage

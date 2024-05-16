@@ -1,7 +1,7 @@
 use crate::models::position::Position;
 use serde::Deserialize;
 
-#[derive(Deserialize, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
+#[derive(Deserialize, Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
 pub struct Base {
     pub position: Position, // position of the base
     pub uid: u32,           // uid of the base
