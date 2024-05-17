@@ -23,11 +23,7 @@ pub fn decide(game_state: GameState) -> Vec<PlayerAction> {
         }
     }
 
-    vec![PlayerAction {
-        src: 0,
-        dest: 0,
-        amount: 0,
-    }]
+    ogermeister
 }
 
 #[cfg(test)]
