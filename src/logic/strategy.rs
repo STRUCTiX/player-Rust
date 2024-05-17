@@ -9,8 +9,14 @@ pub fn decide(game_state: GameState) -> Vec<PlayerAction> {
         }
 
         for target in &game_state.bases {
-            if target.player == game_state.game.player || target.player == 0 {
-                continue;
+            if target.player == game_state.game.player {
+                let sub_oger = PlayerAction {
+                    src: oger.uid,
+                    dest: target.uid,
+                    amount: 3,
+                };
+    
+                ogermeister.push(sub_oger);
             }
 
             let sub_oger = PlayerAction {
