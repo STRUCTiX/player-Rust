@@ -4,9 +4,8 @@ use serde::Deserialize;
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct GameConfig {
-    #[serde(rename = "baselevels")]
     pub base_levels: Vec<BaseLevel>, // all available base levels
-    pub paths: PathConfig, // settings containing paths between bases
+    pub paths: PathConfig,           // settings containing paths between bases
 }
 
 impl Default for GameConfig {
