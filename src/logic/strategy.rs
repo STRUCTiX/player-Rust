@@ -34,7 +34,7 @@ pub fn decide(game_state: GameState) -> Vec<PlayerAction> {
     
                 break;
             }
-        } else if target.population >= 200 {
+        } else if target.population == 200 {
             for next_target in &game_state.bases {
                 if next_target.player != game_state.game.player {
                     let sub_oger = PlayerAction {
