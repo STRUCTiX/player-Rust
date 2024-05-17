@@ -9,7 +9,7 @@ pub fn decide(game_state: GameState) -> Vec<PlayerAction> {
         }
 
         for target in &game_state.bases {
-            if target.player == game_state.game.player {
+            if target.player == game_state.game.player || target.player == 0 {
                 continue;
             }
 
