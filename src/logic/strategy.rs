@@ -17,7 +17,7 @@ pub fn decide(game_state: GameState) -> Vec<PlayerAction> {
             let mut sub_oger = PlayerAction {
                 src: oger.uid,
                 dest: target.uid,
-                amount: target.population * 2 + 4 + std::cmp::max(0, distance(&target.position, &oger.position) - game_state.config.paths.grace_period) * game_state.config.paths.death_rate,
+                amount: target.population * 2 + 3 + std::cmp::max(0, distance(&target.position, &oger.position) - game_state.config.paths.grace_period) * game_state.config.paths.death_rate,
             };
 
             if target.player == 0 {
